@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package short_url;
+option go_package = "./proto;proto"; 
+
+service ShortenerService {
+  rpc Post (PostRequest) returns (PostResponse);
+  rpc Get (GetRequest) returns (GetResponse);
+}
+
+message PostRequest {
+  string longUrl = 1;
+}
+
+message PostResponse {
+  string shortUrl = 1;
+}
+
+message GetRequest {
+  string shortUrl = 1;
+}
+
+message GetResponse {
+  string longUrl = 1;
+}

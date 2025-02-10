@@ -1,0 +1,31 @@
+version: "3.8"
+services:
+  shortener:
+    build: .
+    ports:
+      - "50051:50051"
+    environment:
+      - STORAGE_TYPE=postgresql   # или "inmemory"
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASSWORD=111111111
+      - DB_NAME=shorturl
+      - DB_SSLMODE=disable
+    depends_on:
+      - db
+
+  db:
+    image: postgres:13
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 111111111
+      POSTGRES_DB: shorturl
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
