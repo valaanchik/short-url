@@ -21,12 +21,12 @@ DB_SSLMODE: Режим SSL для подключения к базе данны�
 ### Проверка работы сервиса через gRPC
 Сокращение URL
 Для сокращения длинного URL, используйте команду grpcurl:
-    grpcurl -plaintext -d '{"longUrl": "https://example.com"}' localhost:50051 short_url.ShortenerService/Post
-
-    ![image](https://github.com/user-attachments/assets/8e49dd43-228b-4941-b958-1ae107bb1ff4)
-
+    grpcurl -plaintext -d '{"longUrl": "https://example.com"}' localhost:50051 Short_url.ShortenerService/Post
+ 
+    ![ShortenerService](https://github.com/user-attachments/assets/8e49dd43-228b-4941-b958-1ae107bb1ff4)
+  Для получения длинного URL, по сокращенному используйте команду grpcurl:
     grpcurl -v -plaintext -d '{"shortUrl": "GudobAAAAA"}' localhost:50051 short_url.ShortenerService/Get
-    ![image](https://github.com/user-attachments/assets/51b43092-4a96-440f-8c21-0c8c731fd9c2)
+    ![ShortenerService](https://github.com/user-attachments/assets/51b43092-4a96-440f-8c21-0c8c731fd9c2)
 
 
     
